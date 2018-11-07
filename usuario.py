@@ -22,6 +22,7 @@ class Usuario(object):
         resultado = self.cursor.fetchall()
 
         if resultado:
+            print(resultado[0],)
             return True
         else:
             return False

@@ -9,6 +9,17 @@ class Planta:
         self.conexion.commit()
 
     def buscar(self,id_inv):
+        plantas=[]
         select=("SELECT * FROM planta WHERE id_inv = %s")
         self.cursor.execute(select,(id_inv,))
-        return self.cursor.fetchall()
+        for p in self.cursor.fetchall():
+            planta={
+                'id':p[0],
+                'cultivo':p[1],
+                'fecha':p[2],
+                'id_clasi':p[3],
+                'id_inv':p[4]
+            }
+            plantas.append(planta)
+
+        return plantas
